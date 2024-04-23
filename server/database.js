@@ -14,6 +14,7 @@ const dbUser = process.env.POSTGRES_USER;
 const dbPassword = process.env.POSTGRES_PASSWORD;
 
 export const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
-  host: "localhost",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   dialect: "postgres",
 });
