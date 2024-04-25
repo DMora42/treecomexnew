@@ -321,7 +321,7 @@ app.post("/sniff", async (req, res) => {
     const { action, company, data } = req.body;
 
     data.triggeredUser = userId;
-    console.log(data);
+
     await Perm.create({
       action: action,
       data: JSON.stringify(data),
@@ -368,6 +368,26 @@ app.get("/process", async (req, res) => {
     return res
       .status(500)
       .json({ error: "Erro ao obter os IDs dos processos" });
+  }
+});
+
+app.get("/user", async (req, res) => {
+  try {
+    const userId = req.cookies.userId;
+
+    if (userId) {
+      const user = await User.findOne({
+        where: {
+          id: userId,
+        },
+      });
+
+      if (user) return res.status(200).send(user);
+    }
+
+    res.status(404).send({message: "404"});
+  } catch (error) {
+    res.status(500).send({ error: error });
   }
 });
 

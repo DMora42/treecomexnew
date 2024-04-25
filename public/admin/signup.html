@@ -35,7 +35,8 @@
         text-align: center;
       }
 
-      input[type="email"],
+      input[type="text"],
+      input[type="email"],      
       input[type="password"] {
         width: 100%;
         padding: 10px;
@@ -217,10 +218,10 @@
             },
           )
             .then(async (response) => {
+              if (response.ok) document.getElementById("form").reset();
               const data = await response.json();
               alert(data.message);
             })
-            .catch((error) => alert(error));
         });
     </script>
   </body>

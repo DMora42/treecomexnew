@@ -197,7 +197,7 @@ function showSubmenuData(btnIndex) {
 
         fileDetails.innerHTML = `
             <p>Data de ${
-              value.type === 1 ? "anexo" : "exclusión"
+              value.type === 1 ? "anexo" : "exclusão"
             }: <span class="submenu-span-red">${formatDate(
               value[dateKey],
             )}</span></p>

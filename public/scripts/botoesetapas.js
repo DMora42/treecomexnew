@@ -2,8 +2,26 @@ const processIdDropdown = document.getElementById("process-id-dropdown");
 const saveButton = document.getElementById("save-process");
 
 window.onload = async function () {
+  document.getElementById("register-master").style.display = "none";
+
   if (!company) {
     window.location.href = "CPF.html";
+  }
+
+  const userResponse = await fetch(
+    `${window.location.protocol}//${window.location.hostname}/user`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  );
+
+  const userData = await userResponse.json();
+  if (userResponse.ok && userData.master) {
+    document.getElementById("register-master").style.display = "flex";
   }
 
   const params = new URLSearchParams({
@@ -18,7 +36,7 @@ window.onload = async function () {
         "Content-Type": "application/json",
       },
       credentials: "include",
-    },
+    }
   );
 
   const processIds = await response.json();

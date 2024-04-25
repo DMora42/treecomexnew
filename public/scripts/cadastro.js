@@ -77,7 +77,6 @@ document
           window.location.href = "CPF.html";
         }
       })
-      .catch((error) => alert(error));
   });
 
 const getElementVal = (id) => {

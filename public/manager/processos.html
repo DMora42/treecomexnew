@@ -150,6 +150,8 @@
             },
           );
 
+          if (response.ok) document.getElementById("form").reset();
+
           const data = await response.json();
           alert(data.message || data.error);
         });

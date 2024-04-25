@@ -40,7 +40,6 @@ document
           await delay(2000);
         }
       })
-      .catch((error) => alert(error));
   });
 
 document.getElementById("noCadastro").addEventListener("click", function () {
